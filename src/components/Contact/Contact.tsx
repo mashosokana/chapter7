@@ -3,6 +3,7 @@ import FormGroup from "./FormGroup"
 import Input from "./Input"
 import Textarea from "./Textarea";
 import ErrorMessage from "./ErrorMessage";
+import styles from "./Contact.module.css";
 
 const Contact: React.FC = () => {
   const [name,setName] = useState<string>("");
@@ -86,8 +87,8 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div style={{ maxWidth: "800px", margin: "0 auto", padding: "1rem"}}> 
-      <h1 style={{ textAlign: "left", marginBottom: "2rem" }}>問い合わせフォーム</h1>
+    <div className={styles.container}> 
+      <h1 className={styles.title}>問い合わせフォーム</h1>
       <form onSubmit={handleSubmit}>
         <FormGroup label="お名前">
           <Input
@@ -97,7 +98,8 @@ const Contact: React.FC = () => {
             disabled={isSubmitting} 
           />
           <ErrorMessage message={nameError} />
-        </FormGroup> 
+        </FormGroup>
+
         <FormGroup label ="メールアドレス">
           <Input 
             id="email"
@@ -108,6 +110,7 @@ const Contact: React.FC = () => {
           />
           <ErrorMessage message={emailError} />
         </FormGroup>
+
         <FormGroup label ="本文">
           <Textarea
             id="message"
@@ -117,7 +120,8 @@ const Contact: React.FC = () => {
           />
           <ErrorMessage message={messageError} />
         </FormGroup>
-        <div style={{ textAlign: "center", marginTop: "1rem"}}>
+
+        <div className={styles.buttonWrapper}>
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "送信中..." : "送信"}
           </button>
@@ -126,6 +130,7 @@ const Contact: React.FC = () => {
     </div>
   );
 };
+
 export default Contact;
 
 
